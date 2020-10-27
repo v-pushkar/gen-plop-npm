@@ -1,163 +1,163 @@
-import TemplatesReducer, {
-    GetTemplatesResponseAction,
-    TemplatesState,
-    template,
+import {{Name}}sReducer, {
+    Get{{Name}}sResponseAction,
+    {{Name}}sState,
+    {{name}},
     SetIsFetchingAction,
-    templateDetails,
-    GetTemplateDetailsResponseAction,
+    {{name}}Details,
+    Get{{Name}}DetailsResponseAction,
     GetPredefinedValuesResponseAction,
     predefinedValues,
-    GetTemplateDraftResponseAction,
+    Get{{Name}}DraftResponseAction,
     SetIsErrorFetchingAction,
-    SubmitTemplateResponseAction
+    Submit{{Name}}ResponseAction
 } from '.'
 import {
-    getTemplatesResponse,
-    setIsFetchingTemplates,
-    getTemplateDetailsResponse,
-    setIsFetchingTemplateDetails,
+    get{{Name}}sResponse,
+    setIsFetching{{Name}}s,
+    get{{Name}}DetailsResponse,
+    setIsFetching{{Name}}Details,
     getPredefinedValuesResponse,
-    getTemplateDraftResponse,
-    setIsErrorFetchingTemplateDetails,
-    AddTemplateResponse,
-    EditTemplateResponse
+    get{{Name}}DraftResponse,
+    setIsErrorFetching{{Name}}Details,
+    Add{{Name}}Response,
+    Edit{{Name}}Response
 } from './actions'
 import {
-    mockTemplatesList,
-    mockTemplateDetails,
-    mockTemplatePredefinedValues
+    mock{{Name}}sList,
+    mock{{Name}}Details,
+    mock{{Name}}PredefinedValues
 } from './mockedData'
 
-const INITIAL_STATE: TemplatesState = {
-    templatesList: [],
+const INITIAL_STATE: {{Name}}sState = {
+    {{name}}sList: [],
     isFetching: false,
-    templateDetails: null,
+    {{name}}Details: null,
     isFetchingDetails: false,
     predefinedValues: null,
-    templateDraft: null,
+    {{name}}Draft: null,
     isErrorFetchingDetails: false
 }
 
-const mockData: template[] = mockTemplatesList
-const mockDetails: templateDetails = mockTemplateDetails
-const mockPredefinedValues: predefinedValues = mockTemplatePredefinedValues
+const mockData: {{name}}[] = mock{{Name}}sList
+const mockDetails: {{name}}Details = mock{{Name}}Details
+const mockPredefinedValues: predefinedValues = mock{{Name}}PredefinedValues
 
-const INITIAL_STATE_WITH_LIST_ELEMENT: TemplatesState = {
-    templatesList: [mockDetails],
+const INITIAL_STATE_WITH_LIST_ELEMENT: {{Name}}sState = {
+    {{name}}sList: [mockDetails],
     isFetching: false,
-    templateDetails: null,
+    {{name}}Details: null,
     isFetchingDetails: false,
     predefinedValues: null,
-    templateDraft: null,
+    {{name}}Draft: null,
     isErrorFetchingDetails: false
 }
 
-const mockEditedDetails: templateDetails = JSON.parse(
+const mockEditedDetails: {{name}}Details = JSON.parse(
     JSON.stringify({ ...mockDetails, physicalPlaces: 'editedPhysicalPlaces' })
 )
 
-describe('Templates reducer unit tests', () => {
-    it('Should return proper state for GetTemplatesResponseAction action', () => {
-        const mockedGetTemplatesResponseAction: GetTemplatesResponseAction = getTemplatesResponse(
+describe('{{Name}}s reducer unit tests', () => {
+    it('Should return proper state for Get{{Name}}sResponseAction action', () => {
+        const mockedGet{{Name}}sResponseAction: Get{{Name}}sResponseAction = get{{Name}}sResponse(
             mockData
         )
 
-        const mockedTemplatesState: TemplatesState = {
-            templatesList: [...mockData],
+        const mocked{{Name}}sState: {{Name}}sState = {
+            {{name}}sList: [...mockData],
             isFetching: false,
-            templateDetails: null,
+            {{name}}Details: null,
             isFetchingDetails: false,
             predefinedValues: null,
-            templateDraft: null,
+            {{name}}Draft: null,
             isErrorFetchingDetails: false
         }
 
         expect(
-            TemplatesReducer(INITIAL_STATE, mockedGetTemplatesResponseAction)
-        ).toEqual(mockedTemplatesState)
+            {{Name}}sReducer(INITIAL_STATE, mockedGet{{Name}}sResponseAction)
+        ).toEqual(mocked{{Name}}sState)
     })
 
     it('Should return proper state for SetIsFetchingAction action', () => {
-        const mockedSetIsFetchingAction: SetIsFetchingAction = setIsFetchingTemplates(
+        const mockedSetIsFetchingAction: SetIsFetchingAction = setIsFetching{{Name}}s(
             true
         )
 
-        const mockedTemplatesState: TemplatesState = {
-            templatesList: [],
+        const mocked{{Name}}sState: {{Name}}sState = {
+            {{name}}sList: [],
             isFetching: true,
-            templateDetails: null,
+            {{name}}Details: null,
             isFetchingDetails: false,
             predefinedValues: null,
-            templateDraft: null,
+            {{name}}Draft: null,
             isErrorFetchingDetails: false
         }
 
         expect(
-            TemplatesReducer(INITIAL_STATE, mockedSetIsFetchingAction)
-        ).toEqual(mockedTemplatesState)
+            {{Name}}sReducer(INITIAL_STATE, mockedSetIsFetchingAction)
+        ).toEqual(mocked{{Name}}sState)
     })
 
-    it('Should return proper state for GetTemplateDetailsResponseAction action', () => {
-        const mockedGetTemplateDetailsResponseAction: GetTemplateDetailsResponseAction = getTemplateDetailsResponse(
+    it('Should return proper state for Get{{Name}}DetailsResponseAction action', () => {
+        const mockedGet{{Name}}DetailsResponseAction: Get{{Name}}DetailsResponseAction = get{{Name}}DetailsResponse(
             mockDetails
         )
 
-        const mockedTemplatesState: TemplatesState = {
-            templatesList: [],
+        const mocked{{Name}}sState: {{Name}}sState = {
+            {{name}}sList: [],
             isFetching: false,
-            templateDetails: mockDetails,
+            {{name}}Details: mockDetails,
             isFetchingDetails: false,
             predefinedValues: null,
-            templateDraft: null,
+            {{name}}Draft: null,
             isErrorFetchingDetails: false
         }
 
         expect(
-            TemplatesReducer(
+            {{Name}}sReducer(
                 INITIAL_STATE,
-                mockedGetTemplateDetailsResponseAction
+                mockedGet{{Name}}DetailsResponseAction
             )
-        ).toEqual(mockedTemplatesState)
+        ).toEqual(mocked{{Name}}sState)
     })
 
     it('Should return proper state for SetIsFetchingAction action for details', () => {
-        const mockedSetIsFetchingAction: SetIsFetchingAction = setIsFetchingTemplateDetails(
+        const mockedSetIsFetchingAction: SetIsFetchingAction = setIsFetching{{Name}}Details(
             true
         )
 
-        const mockedTemplatesState: TemplatesState = {
-            templatesList: [],
+        const mocked{{Name}}sState: {{Name}}sState = {
+            {{name}}sList: [],
             isFetching: false,
-            templateDetails: null,
+            {{name}}Details: null,
             isFetchingDetails: true,
             predefinedValues: null,
-            templateDraft: null,
+            {{name}}Draft: null,
             isErrorFetchingDetails: false
         }
 
         expect(
-            TemplatesReducer(INITIAL_STATE, mockedSetIsFetchingAction)
-        ).toEqual(mockedTemplatesState)
+            {{Name}}sReducer(INITIAL_STATE, mockedSetIsFetchingAction)
+        ).toEqual(mocked{{Name}}sState)
     })
 
     it('Should return proper state for SetIsErrorFetchingAction action for details', () => {
-        const mockedSetIsFetchingAction: SetIsErrorFetchingAction = setIsErrorFetchingTemplateDetails(
+        const mockedSetIsFetchingAction: SetIsErrorFetchingAction = setIsErrorFetching{{Name}}Details(
             true
         )
 
-        const mockedTemplatesState: TemplatesState = {
-            templatesList: [],
+        const mocked{{Name}}sState: {{Name}}sState = {
+            {{name}}sList: [],
             isFetching: false,
-            templateDetails: null,
+            {{name}}Details: null,
             isFetchingDetails: false,
             predefinedValues: null,
-            templateDraft: null,
+            {{name}}Draft: null,
             isErrorFetchingDetails: true
         }
 
         expect(
-            TemplatesReducer(INITIAL_STATE, mockedSetIsFetchingAction)
-        ).toEqual(mockedTemplatesState)
+            {{Name}}sReducer(INITIAL_STATE, mockedSetIsFetchingAction)
+        ).toEqual(mocked{{Name}}sState)
     })
 
     it('Should return proper state for GetPredefinedValuesResponseAction action for details', () => {
@@ -165,84 +165,84 @@ describe('Templates reducer unit tests', () => {
             mockPredefinedValues
         )
 
-        const mockedTemplatesState: TemplatesState = {
-            templatesList: [],
+        const mocked{{Name}}sState: {{Name}}sState = {
+            {{name}}sList: [],
             isFetching: false,
-            templateDetails: null,
+            {{name}}Details: null,
             isFetchingDetails: false,
             predefinedValues: { ...mockPredefinedValues },
-            templateDraft: null,
+            {{name}}Draft: null,
             isErrorFetchingDetails: false
         }
 
         expect(
-            TemplatesReducer(
+            {{Name}}sReducer(
                 INITIAL_STATE,
                 mockedGetPredefinedValuesResponseAction
             )
-        ).toEqual(mockedTemplatesState)
+        ).toEqual(mocked{{Name}}sState)
     })
 })
 
-it('Should return proper state for GetTemplateDraftResponseAction action', () => {
-    const mockedGetTemplateDraftResponseAction: GetTemplateDraftResponseAction = getTemplateDraftResponse(
+it('Should return proper state for Get{{Name}}DraftResponseAction action', () => {
+    const mockedGet{{Name}}DraftResponseAction: Get{{Name}}DraftResponseAction = get{{Name}}DraftResponse(
         mockDetails
     )
 
-    const mockedTemplatesState: TemplatesState = {
-        templatesList: [],
+    const mocked{{Name}}sState: {{Name}}sState = {
+        {{name}}sList: [],
         isFetching: false,
-        templateDetails: null,
+        {{name}}Details: null,
         isFetchingDetails: false,
         predefinedValues: null,
-        templateDraft: mockDetails,
+        {{name}}Draft: mockDetails,
         isErrorFetchingDetails: false
     }
 
     expect(
-        TemplatesReducer(INITIAL_STATE, mockedGetTemplateDraftResponseAction)
-    ).toEqual(mockedTemplatesState)
+        {{Name}}sReducer(INITIAL_STATE, mockedGet{{Name}}DraftResponseAction)
+    ).toEqual(mocked{{Name}}sState)
 })
 
-it('Should return proper state for ADD_TEMPLATE_RESPONSE action', () => {
-    const mockedSubmitTemplateResponseAction: SubmitTemplateResponseAction = AddTemplateResponse(
+it('Should return proper state for ADD_{{NAME}}_RESPONSE action', () => {
+    const mockedSubmit{{Name}}ResponseAction: Submit{{Name}}ResponseAction = Add{{Name}}Response(
         mockDetails
     )
 
-    const mockedTemplatesState: TemplatesState = {
-        templatesList: [mockDetails],
+    const mocked{{Name}}sState: {{Name}}sState = {
+        {{name}}sList: [mockDetails],
         isFetching: false,
-        templateDetails: null,
+        {{name}}Details: null,
         isFetchingDetails: false,
         predefinedValues: null,
-        templateDraft: null,
+        {{name}}Draft: null,
         isErrorFetchingDetails: false
     }
 
     expect(
-        TemplatesReducer(INITIAL_STATE, mockedSubmitTemplateResponseAction)
-    ).toEqual(mockedTemplatesState)
+        {{Name}}sReducer(INITIAL_STATE, mockedSubmit{{Name}}ResponseAction)
+    ).toEqual(mocked{{Name}}sState)
 })
 
-it('Should return proper state for EDIT_TEMPLATE_RESPONSE action', () => {
-    const mockedSubmitTemplateResponseAction: SubmitTemplateResponseAction = EditTemplateResponse(
+it('Should return proper state for EDIT_{{NAME}}_RESPONSE action', () => {
+    const mockedSubmit{{Name}}ResponseAction: Submit{{Name}}ResponseAction = Edit{{Name}}Response(
         mockEditedDetails
     )
 
-    const mockedTemplatesState: TemplatesState = {
-        templatesList: [mockEditedDetails],
+    const mocked{{Name}}sState: {{Name}}sState = {
+        {{name}}sList: [mockEditedDetails],
         isFetching: false,
-        templateDetails: null,
+        {{name}}Details: null,
         isFetchingDetails: false,
         predefinedValues: null,
-        templateDraft: null,
+        {{name}}Draft: null,
         isErrorFetchingDetails: false
     }
 
     expect(
-        TemplatesReducer(
+        {{Name}}sReducer(
             INITIAL_STATE_WITH_LIST_ELEMENT,
-            mockedSubmitTemplateResponseAction
+            mockedSubmit{{Name}}ResponseAction
         )
-    ).toEqual(mockedTemplatesState)
+    ).toEqual(mocked{{Name}}sState)
 })

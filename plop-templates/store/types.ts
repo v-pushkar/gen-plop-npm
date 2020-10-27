@@ -1,21 +1,21 @@
 import { Action } from 'redux'
 
 export enum ActionTypes {
-    GET_TEMPLATES_REQUEST = '@Templates/GET_TEMPLATES_REQUEST',
-    GET_TEMPLATES_RESPONSE = '@Templates/GET_TEMPLATES_RESPONSE',
-    SET_IS_FETCHING = '@Templates/SET_IS_FETCHING',
-    GET_TEMPLATE_DETAILS_REQUEST = '@Templates/GET_TEMPLATE_DETAILS_REQUEST',
-    GET_TEMPLATES_DETAILS_RESPONSE = '@Templates/GET_TEMPLATES_DETAILS_RESPONSE',
-    SET_IS_FETCHING_DETAILS = '@Templates/SET_IS_FETCHING_DETAILS',
-    GET_PREDEFINED_VALUES_REQUEST = '@Templates/GET_PREDEFINED_VALUES_REQUEST',
-    GET_PREDEFINED_VALUES_RESPONSE = '@Templates/GET_PREDEFINED_VALUES_RESPONSE',
-    GET_TEMPLATE_DRAFT_REQUEST = '@Templates/GET_TEMPLATE_DRAFT_REQUEST',
-    GET_TEMPLATE_DRAFT_RESPONSE = '@Templates/GET_TEMPLATE_DRAFT_RESPONSE',
-    ADD_TEMPLATE_REQUEST = '@Templates/ADD_TEMPLATE_REQUEST',
-    EDIT_TEMPLATE_REQUEST = '@Templates/EDIT_TEMPLATE_REQUEST',
-    ADD_TEMPLATE_RESPONSE = '@Templates/ADD_TEMPLATE_RESPONSE',
-    EDIT_TEMPLATE_RESPONSE = '@Templates/EDIT_TEMPLATE_RESPONSE',
-    SET_IS_ERROR_FETCHING_DETAILS = '@Templates/SET_IS_ERROR_FETCHING_DETAILS'
+    GET_{{NAME}}S_REQUEST = '@{{Name}}s/GET_{{NAME}}S_REQUEST',
+    GET_{{NAME}}S_RESPONSE = '@{{Name}}s/GET_{{NAME}}S_RESPONSE',
+    SET_IS_FETCHING = '@{{Name}}s/SET_IS_FETCHING',
+    GET_{{NAME}}_DETAILS_REQUEST = '@{{Name}}s/GET_{{NAME}}_DETAILS_REQUEST',
+    GET_{{NAME}}S_DETAILS_RESPONSE = '@{{Name}}s/GET_{{NAME}}S_DETAILS_RESPONSE',
+    SET_IS_FETCHING_DETAILS = '@{{Name}}s/SET_IS_FETCHING_DETAILS',
+    GET_PREDEFINED_VALUES_REQUEST = '@{{Name}}s/GET_PREDEFINED_VALUES_REQUEST',
+    GET_PREDEFINED_VALUES_RESPONSE = '@{{Name}}s/GET_PREDEFINED_VALUES_RESPONSE',
+    GET_{{NAME}}_DRAFT_REQUEST = '@{{Name}}s/GET_{{NAME}}_DRAFT_REQUEST',
+    GET_{{NAME}}_DRAFT_RESPONSE = '@{{Name}}s/GET_{{NAME}}_DRAFT_RESPONSE',
+    ADD_{{NAME}}_REQUEST = '@{{Name}}s/ADD_{{NAME}}_REQUEST',
+    EDIT_{{NAME}}_REQUEST = '@{{Name}}s/EDIT_{{NAME}}_REQUEST',
+    ADD_{{NAME}}_RESPONSE = '@{{Name}}s/ADD_{{NAME}}_RESPONSE',
+    EDIT_{{NAME}}_RESPONSE = '@{{Name}}s/EDIT_{{NAME}}_RESPONSE',
+    SET_IS_ERROR_FETCHING_DETAILS = '@{{Name}}s/SET_IS_ERROR_FETCHING_DETAILS'
 }
 
 type ppe = {
@@ -64,7 +64,7 @@ export type activity = {
     displayOrder?: number
 }
 
-export type bosTemplateData = {
+export type bos{{Name}}Data = {
     physicalPlaces: string
     ppes: ppe[]
     notices: notice[]
@@ -72,7 +72,7 @@ export type bosTemplateData = {
     activeCareActivities?: activity[]
 }
 
-export type template = {
+export type {{name}} = {
     id: number
     productionCenterId: string
     publishDate: Date
@@ -83,14 +83,14 @@ export type template = {
     name: string
 }
 
-export type templateDetails = template & {
-    bosTemplateData: bosTemplateData
+export type {{name}}Details = {{name}} & {
+    bos{{Name}}Data: bos{{Name}}Data
 }
 
-export type templateDraft = {
+export type {{name}}Draft = {
     region: string
     area: string
-    bosTemplateData: bosTemplateData
+    bos{{Name}}Data: bos{{Name}}Data
     inUse: boolean
 }
 
@@ -102,18 +102,18 @@ export type predefinedValues = {
     categories: category[]
 }
 
-export type TemplatesState = {
-    readonly templatesList: template[]
+export type {{Name}}sState = {
+    readonly {{name}}sList: {{name}}[]
     readonly isFetching: boolean
-    readonly templateDetails: templateDetails | null
+    readonly {{name}}Details: {{name}}Details | null
     readonly isFetchingDetails: boolean
     readonly predefinedValues: predefinedValues | null
-    readonly templateDraft: templateDetails | null
+    readonly {{name}}Draft: {{name}}Details | null
     readonly isErrorFetchingDetails: boolean
 }
 
-export interface GetTemplatesResponseAction extends Action {
-    templatesList: template[]
+export interface Get{{Name}}sResponseAction extends Action {
+    {{name}}sList: {{name}}[]
 }
 
 export interface SetIsFetchingAction extends Action {
@@ -124,36 +124,36 @@ export interface SetIsErrorFetchingAction extends Action {
     isError: boolean
 }
 
-export interface GetTemplateDetailsRequestAction extends Action {
+export interface Get{{Name}}DetailsRequestAction extends Action {
     id: number
 }
 
-export interface GetTemplateDetailsResponseAction extends Action {
-    details: templateDetails | null
+export interface Get{{Name}}DetailsResponseAction extends Action {
+    details: {{name}}Details | null
 }
 
 export interface GetPredefinedValuesResponseAction extends Action {
     values: predefinedValues | null
 }
 
-export interface GetTemplateDraftRequestAction extends Action {
+export interface Get{{Name}}DraftRequestAction extends Action {
     id: number
 }
 
-export interface GetTemplateDraftResponseAction extends Action {
-    draft: templateDetails | null
+export interface Get{{Name}}DraftResponseAction extends Action {
+    draft: {{name}}Details | null
 }
 
-export interface AddTemplateRequestAction extends Action {
-    data: templateDraft
+export interface Add{{Name}}RequestAction extends Action {
+    data: {{name}}Draft
     publish: boolean
 }
 
-export interface EditTemplateRequestAction extends Action {
-    data: templateDetails
+export interface Edit{{Name}}RequestAction extends Action {
+    data: {{name}}Details
     publish: boolean
 }
 
-export interface SubmitTemplateResponseAction extends Action {
-    template: templateDetails
+export interface Submit{{Name}}ResponseAction extends Action {
+    {{name}}: {{name}}Details
 }

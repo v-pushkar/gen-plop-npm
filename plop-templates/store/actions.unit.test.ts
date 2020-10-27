@@ -2,18 +2,18 @@ import { Action } from 'redux'
 import {
     ActionTypes,
     {{Name}}sActions,
-    {{tame}},
+    {{name}},
     Get{{Name}}sResponseAction,
     SetIsFetchingAction,
     Get{{Name}}DetailsRequestAction,
     Get{{Name}}DetailsResponseAction,
-    {{tame}}Details,
+    {{name}}Details,
     GetPredefinedValuesResponseAction,
     predefinedValues,
     Get{{Name}}DraftRequestAction,
     Get{{Name}}DraftResponseAction,
     SetIsErrorFetchingAction,
-    {{tame}}Draft,
+    {{name}}Draft,
     Add{{Name}}RequestAction,
     Edit{{Name}}RequestAction,
     Submit{{Name}}ResponseAction
@@ -24,10 +24,10 @@ import {
     mock{{Name}}PredefinedValues
 } from './mockedData'
 
-const testResponse: {{tame}}[] = mock{{Name}}sList
-const testDetailsResponse: {{tame}}Details = mock{{Name}}Details
+const testResponse: {{name}}[] = mock{{Name}}sList
+const testDetailsResponse: {{name}}Details = mock{{Name}}Details
 const mockPredefinedValues: predefinedValues = mock{{Name}}PredefinedValues
-const mock{{Name}}Draft: {{tame}}Draft = {
+const mock{{Name}}Draft: {{name}}Draft = {
     region: 'testRegion',
     area: 'testArea',
     bos{{Name}}Data: { ...mock{{Name}}Details.bos{{Name}}Data },
@@ -46,7 +46,7 @@ describe('{{Name}}s actions unit tests', () => {
     it('Should test get{{Name}}sResponse action creator', () => {
         const expectedAction: Get{{Name}}sResponseAction = {
             type: ActionTypes.GET_{{NAME}}S_RESPONSE,
-            {{tame}}sList: [...testResponse]
+            {{name}}sList: [...testResponse]
         }
 
         expect({{Name}}sActions.get{{Name}}sResponse(testResponse)).toEqual(
@@ -178,7 +178,7 @@ it('Should test Edit{{Name}}Request action creator', () => {
 it('Should test Add{{Name}}Response action creator', () => {
     const expectedAction: Submit{{Name}}ResponseAction = {
         type: ActionTypes.ADD_{{NAME}}_RESPONSE,
-        {{tame}}: mock{{Name}}Details
+        {{name}}: mock{{Name}}Details
     }
 
     expect({{Name}}sActions.Add{{Name}}Response(mock{{Name}}Details)).toEqual(
@@ -189,7 +189,7 @@ it('Should test Add{{Name}}Response action creator', () => {
 it('Should test Edit{{Name}}Response action creator', () => {
     const expectedAction: Submit{{Name}}ResponseAction = {
         type: ActionTypes.EDIT_{{NAME}}_RESPONSE,
-        {{tame}}: mock{{Name}}Details
+        {{name}}: mock{{Name}}Details
     }
 
     expect({{Name}}sActions.Edit{{Name}}Response(mock{{Name}}Details)).toEqual(

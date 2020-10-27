@@ -1,80 +1,80 @@
 import {
-    getTemplates,
-    getTemplateDetails,
+    get{{Name}}s,
+    get{{Name}}Details,
     getPredefinedValues,
-    getTemplateDraft,
-    addTemplate,
-    editTemplate
+    get{{Name}}Draft,
+    add{{Name}},
+    edit{{Name}}
 } from './saga'
 import {
     ActionTypes,
     SetIsFetchingAction,
-    template,
-    GetTemplatesResponseAction,
-    templateDetails,
-    GetTemplateDetailsResponseAction,
+    {{name}},
+    Get{{Name}}sResponseAction,
+    {{name}}Details,
+    Get{{Name}}DetailsResponseAction,
     GetPredefinedValuesResponseAction,
     predefinedValues,
-    GetTemplateDraftResponseAction,
-    GetTemplateDraftRequestAction,
+    Get{{Name}}DraftResponseAction,
+    Get{{Name}}DraftRequestAction,
     SetIsErrorFetchingAction,
-    AddTemplateRequestAction,
-    templateDraft,
-    SubmitTemplateResponseAction,
-    EditTemplateRequestAction
+    Add{{Name}}RequestAction,
+    {{name}}Draft,
+    Submit{{Name}}ResponseAction,
+    Edit{{Name}}RequestAction
 } from './types'
 import { put } from 'redux-saga/effects'
 import {
-    mockTemplatesList,
-    mockTemplateDetails,
-    mockTemplatePredefinedValues
+    mock{{Name}}sList,
+    mock{{Name}}Details,
+    mock{{Name}}PredefinedValues
 } from './mockedData'
-import { setIsErrorFetchingTemplateDetails } from './actions'
+import { setIsErrorFetching{{Name}}Details } from './actions'
 
-const mockList: template[] = mockTemplatesList
-const mockDetails: templateDetails = mockTemplateDetails
-const mockPredefinedValues: predefinedValues = mockTemplatePredefinedValues
+const mockList: {{name}}[] = mock{{Name}}sList
+const mockDetails: {{name}}Details = mock{{Name}}Details
+const mockPredefinedValues: predefinedValues = mock{{Name}}PredefinedValues
 
-const mockTemplateDraft: templateDraft = {
+const mock{{Name}}Draft: {{name}}Draft = {
     region: 'testRegion',
     area: 'testArea',
-    bosTemplateData: { ...mockTemplateDetails.bosTemplateData },
+    bos{{Name}}Data: { ...mock{{Name}}Details.bos{{Name}}Data },
     inUse: false
 }
 
-describe('Templates saga unit tests', () => {
-    it('Should test getTemplates', () => {
-        const mockedsetIsFetchingTemplatesTrueAction: SetIsFetchingAction = {
+describe('{{Name}}s saga unit tests', () => {
+    it('Should test get{{Name}}s', () => {
+        const mockedsetIsFetching{{Name}}sTrueAction: SetIsFetchingAction = {
             type: ActionTypes.SET_IS_FETCHING,
             isFetching: true
         }
 
-        const mockedsetIsFetchingTemplatesFalseAction: SetIsFetchingAction = {
+        const mockedsetIsFetching{{Name}}sFalseAction: SetIsFetchingAction = {
             type: ActionTypes.SET_IS_FETCHING,
             isFetching: false
         }
 
-        const mockedResponseAction: GetTemplatesResponseAction = {
-            type: ActionTypes.GET_TEMPLATES_RESPONSE,
-            templatesList: mockList
+        const mockedResponseAction: Get{{Name}}sResponseAction = {
+            type: ActionTypes.GET_{{NAME}}S_RESPONSE,
+            {{name}}sList: mockList
         }
 
-        const result = getTemplates()
+        const result = get{{Name}}s()
 
         expect(result.next().value).toEqual(
-            put(mockedsetIsFetchingTemplatesTrueAction)
+            put(mockedsetIsFetching{{Name}}sTrueAction)
         )
 
         result.next()
 
         expect(result.next(mockList).value).toEqual(
-            put(mockedsetIsFetchingTemplatesFalseAction)
+            put(mockedsetIsFetching{{Name}}sFalseAction)
         )
 
         expect(result.next().value).toEqual(put(mockedResponseAction))
     })
 
-    it('Should test getTemplateDetails', () => {
+    it('Should test get{{Name}}Details', () => {
         const mockedsetIsFetchingDetailsTrueAction: SetIsFetchingAction = {
             type: ActionTypes.SET_IS_FETCHING_DETAILS,
             isFetching: true
@@ -85,13 +85,13 @@ describe('Templates saga unit tests', () => {
             isFetching: false
         }
 
-        const mockedResponseAction: GetTemplateDetailsResponseAction = {
-            type: ActionTypes.GET_TEMPLATES_DETAILS_RESPONSE,
+        const mockedResponseAction: Get{{Name}}DetailsResponseAction = {
+            type: ActionTypes.GET_{{NAME}}S_DETAILS_RESPONSE,
             details: mockDetails
         }
 
-        const result = getTemplateDetails({
-            type: '@Templates/GET_TEMPLATES_DETAILS_RESPONSE',
+        const result = get{{Name}}Details({
+            type: '@{{Name}}s/GET_{{NAME}}S_DETAILS_RESPONSE',
             id: 1
         })
 
@@ -108,7 +108,7 @@ describe('Templates saga unit tests', () => {
         expect(result.next().value).toEqual(put(mockedResponseAction))
     })
 
-    it('Should test getTemplateDetails error', () => {
+    it('Should test get{{Name}}Details error', () => {
         const mockedsetIsFetchingDetailsTrueAction: SetIsFetchingAction = {
             type: ActionTypes.SET_IS_FETCHING_DETAILS,
             isFetching: true
@@ -124,8 +124,8 @@ describe('Templates saga unit tests', () => {
             isError: true
         }
 
-        const result = getTemplateDetails({
-            type: '@Templates/GET_TEMPLATES_DETAILS_RESPONSE',
+        const result = get{{Name}}Details({
+            type: '@{{Name}}s/GET_{{NAME}}S_DETAILS_RESPONSE',
             id: 1
         })
 
@@ -171,9 +171,9 @@ describe('Templates saga unit tests', () => {
         expect(result.next().value).toEqual(put(mockedResponseAction))
     })
 
-    it('Should test getTemplateDraft', () => {
-        const mockedRequestAction: GetTemplateDraftRequestAction = {
-            type: ActionTypes.GET_TEMPLATE_DRAFT_REQUEST,
+    it('Should test get{{Name}}Draft', () => {
+        const mockedRequestAction: Get{{Name}}DraftRequestAction = {
+            type: ActionTypes.GET_{{NAME}}_DRAFT_REQUEST,
             id: 1
         }
 
@@ -192,12 +192,12 @@ describe('Templates saga unit tests', () => {
             values: mockPredefinedValues
         }
 
-        const mockedDraftResponseAction: GetTemplateDraftResponseAction = {
-            type: ActionTypes.GET_TEMPLATE_DRAFT_RESPONSE,
+        const mockedDraftResponseAction: Get{{Name}}DraftResponseAction = {
+            type: ActionTypes.GET_{{NAME}}_DRAFT_RESPONSE,
             draft: mockDetails
         }
 
-        const result = getTemplateDraft(mockedRequestAction)
+        const result = get{{Name}}Draft(mockedRequestAction)
 
         expect(result.next().value).toEqual(
             put(mockedsetIsFetchingDetailsTrueAction)
@@ -215,38 +215,38 @@ describe('Templates saga unit tests', () => {
         )
     })
 
-    it('Should test addTemplate', () => {
-        const mockedRequestAction: AddTemplateRequestAction = {
-            type: ActionTypes.ADD_TEMPLATE_REQUEST,
-            data: mockTemplateDraft,
+    it('Should test add{{Name}}', () => {
+        const mockedRequestAction: Add{{Name}}RequestAction = {
+            type: ActionTypes.ADD_{{NAME}}_REQUEST,
+            data: mock{{Name}}Draft,
             publish: false
         }
 
-        const mockedsetIsFetchingTemplatesTrueAction: SetIsFetchingAction = {
+        const mockedsetIsFetching{{Name}}sTrueAction: SetIsFetchingAction = {
             type: ActionTypes.SET_IS_FETCHING,
             isFetching: true
         }
 
-        const mockedsetIsFetchingTemplatesFalseAction: SetIsFetchingAction = {
+        const mockedsetIsFetching{{Name}}sFalseAction: SetIsFetchingAction = {
             type: ActionTypes.SET_IS_FETCHING,
             isFetching: false
         }
 
-        const mockedPredefinedValuesResponseAction: SubmitTemplateResponseAction = {
-            type: ActionTypes.ADD_TEMPLATE_RESPONSE,
-            template: mockTemplateDetails
+        const mockedPredefinedValuesResponseAction: Submit{{Name}}ResponseAction = {
+            type: ActionTypes.ADD_{{NAME}}_RESPONSE,
+            {{name}}: mock{{Name}}Details
         }
 
-        const result = addTemplate(mockedRequestAction)
+        const result = add{{Name}}(mockedRequestAction)
 
         expect(result.next().value).toEqual(
-            put(mockedsetIsFetchingTemplatesTrueAction)
+            put(mockedsetIsFetching{{Name}}sTrueAction)
         )
 
         result.next()
 
-        expect(result.next(mockTemplateDetails).value).toEqual(
-            put(mockedsetIsFetchingTemplatesFalseAction)
+        expect(result.next(mock{{Name}}Details).value).toEqual(
+            put(mockedsetIsFetching{{Name}}sFalseAction)
         )
 
         expect(result.next().value).toEqual(
@@ -254,38 +254,38 @@ describe('Templates saga unit tests', () => {
         )
     })
 
-    it('Should test editTemplate', () => {
-        const mockedRequestAction: EditTemplateRequestAction = {
-            type: ActionTypes.ADD_TEMPLATE_REQUEST,
-            data: mockTemplateDetails,
+    it('Should test edit{{Name}}', () => {
+        const mockedRequestAction: Edit{{Name}}RequestAction = {
+            type: ActionTypes.ADD_{{NAME}}_REQUEST,
+            data: mock{{Name}}Details,
             publish: false
         }
 
-        const mockedsetIsFetchingTemplatesTrueAction: SetIsFetchingAction = {
+        const mockedsetIsFetching{{Name}}sTrueAction: SetIsFetchingAction = {
             type: ActionTypes.SET_IS_FETCHING,
             isFetching: true
         }
 
-        const mockedsetIsFetchingTemplatesFalseAction: SetIsFetchingAction = {
+        const mockedsetIsFetching{{Name}}sFalseAction: SetIsFetchingAction = {
             type: ActionTypes.SET_IS_FETCHING,
             isFetching: false
         }
 
-        const mockedPredefinedValuesResponseAction: SubmitTemplateResponseAction = {
-            type: ActionTypes.EDIT_TEMPLATE_RESPONSE,
-            template: mockTemplateDetails
+        const mockedPredefinedValuesResponseAction: Submit{{Name}}ResponseAction = {
+            type: ActionTypes.EDIT_{{NAME}}_RESPONSE,
+            {{name}}: mock{{Name}}Details
         }
 
-        const result = editTemplate(mockedRequestAction)
+        const result = edit{{Name}}(mockedRequestAction)
 
         expect(result.next().value).toEqual(
-            put(mockedsetIsFetchingTemplatesTrueAction)
+            put(mockedsetIsFetching{{Name}}sTrueAction)
         )
 
         result.next()
 
-        expect(result.next(mockTemplateDetails).value).toEqual(
-            put(mockedsetIsFetchingTemplatesFalseAction)
+        expect(result.next(mock{{Name}}Details).value).toEqual(
+            put(mockedsetIsFetching{{Name}}sFalseAction)
         )
 
         expect(result.next().value).toEqual(

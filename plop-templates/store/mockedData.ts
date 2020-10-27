@@ -1,6 +1,6 @@
-import { template, templateDetails, predefinedValues } from './types'
+import { {{name}}, {{name}}Details, predefinedValues } from './types'
 
-export const mockTemplatesList: template[] = [
+export const mock{{Name}}sList: {{name}}[] = [
     {
         id: 1,
         publishDate: new Date(),
@@ -43,12 +43,12 @@ export const mockTemplatesList: template[] = [
     }
 ]
 
-export const mockTemplateDetails: templateDetails = {
+export const mock{{Name}}Details: {{name}}Details = {
     id: 1,
     productionCenterId: '1',
     name: 'name',
     status: Math.random() < 0.5 ? 'Test' : 'Published',
-    bosTemplateData: {
+    bos{{Name}}Data: {
         physicalPlaces: 'place1',
         ppes: [
             {
@@ -465,7 +465,7 @@ export const mockTemplateDetails: templateDetails = {
     inUse: false
 }
 
-export const mockTemplatePredefinedValues: predefinedValues = {
+export const mock{{Name}}PredefinedValues: predefinedValues = {
     physicalPlaces: ['place1', 'place2'],
     ppes: [
         {

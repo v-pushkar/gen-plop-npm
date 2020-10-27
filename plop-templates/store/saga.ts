@@ -1,32 +1,32 @@
 import {
-    template,
+    {{name}},
     ActionTypes,
-    templateDetails,
+    {{name}}Details,
     predefinedValues,
-    GetTemplateDraftRequestAction,
-    GetTemplateDetailsRequestAction,
-    AddTemplateRequestAction,
-    EditTemplateRequestAction
+    Get{{Name}}DraftRequestAction,
+    Get{{Name}}DetailsRequestAction,
+    Add{{Name}}RequestAction,
+    Edit{{Name}}RequestAction
 } from './types'
-import { TemplatesActions } from '.'
+import { {{Name}}sActions } from '.'
 import { put, takeEvery, call, takeLatest, all } from 'redux-saga/effects'
 import { NotificationsActions, NotificationTypes } from 'store'
 import {
-    fetchTemplates,
-    fetchTemplate,
+    fetch{{Name}}s,
+    fetch{{Name}},
     fetchPredefinedValues,
     sendPublished,
     sendDraft
-} from 'Services/Templates'
+} from 'Services/{{Name}}s'
 
-export function* getTemplates(): Generator {
-    yield put(TemplatesActions.setIsFetchingTemplates(true))
+export function* get{{Name}}s(): Generator {
+    yield put({{Name}}sActions.setIsFetching{{Name}}s(true))
     try {
-        const response = (yield call(() => fetchTemplates())) as template[]
-        yield put(TemplatesActions.setIsFetchingTemplates(false))
-        yield put(TemplatesActions.getTemplatesResponse(response))
+        const response = (yield call(() => fetch{{Name}}s())) as {{name}}[]
+        yield put({{Name}}sActions.setIsFetching{{Name}}s(false))
+        yield put({{Name}}sActions.get{{Name}}sResponse(response))
     } catch (error) {
-        yield put(TemplatesActions.setIsFetchingTemplates(false))
+        yield put({{Name}}sActions.setIsFetching{{Name}}s(false))
         yield put(
             NotificationsActions.addNotification({
                 message: error.message,
@@ -36,39 +36,39 @@ export function* getTemplates(): Generator {
     }
 }
 
-export function* getTemplateDetails({
+export function* get{{Name}}Details({
     id
-}: GetTemplateDetailsRequestAction): Generator {
-    yield put(TemplatesActions.setIsFetchingTemplateDetails(true))
+}: Get{{Name}}DetailsRequestAction): Generator {
+    yield put({{Name}}sActions.setIsFetching{{Name}}Details(true))
     try {
         const response = (yield call(() =>
-            fetchTemplate(id)
-        )) as templateDetails
-        yield put(TemplatesActions.setIsFetchingTemplateDetails(false))
-        yield put(TemplatesActions.getTemplateDetailsResponse(response))
+            fetch{{Name}}(id)
+        )) as {{name}}Details
+        yield put({{Name}}sActions.setIsFetching{{Name}}Details(false))
+        yield put({{Name}}sActions.get{{Name}}DetailsResponse(response))
     } catch (error) {
-        yield put(TemplatesActions.setIsFetchingTemplateDetails(false))
-        yield put(TemplatesActions.setIsErrorFetchingTemplateDetails(true))
+        yield put({{Name}}sActions.setIsFetching{{Name}}Details(false))
+        yield put({{Name}}sActions.setIsErrorFetching{{Name}}Details(true))
         yield put(
             NotificationsActions.addNotification({
                 message: error.message,
                 type: NotificationTypes.ERROR
             })
         )
-        yield put(TemplatesActions.setIsErrorFetchingTemplateDetails(true))
+        yield put({{Name}}sActions.setIsErrorFetching{{Name}}Details(true))
     }
 }
 
 export function* getPredefinedValues(): Generator {
-    yield put(TemplatesActions.setIsFetchingTemplateDetails(true))
+    yield put({{Name}}sActions.setIsFetching{{Name}}Details(true))
     try {
         const response = (yield call(() =>
             fetchPredefinedValues()
         )) as predefinedValues
-        yield put(TemplatesActions.setIsFetchingTemplateDetails(false))
-        yield put(TemplatesActions.getPredefinedValuesResponse(response))
+        yield put({{Name}}sActions.setIsFetching{{Name}}Details(false))
+        yield put({{Name}}sActions.getPredefinedValuesResponse(response))
     } catch (error) {
-        yield put(TemplatesActions.setIsFetchingTemplateDetails(false))
+        yield put({{Name}}sActions.setIsFetching{{Name}}Details(false))
         yield put(
             NotificationsActions.addNotification({
                 message: 'Error',
@@ -78,22 +78,22 @@ export function* getPredefinedValues(): Generator {
     }
 }
 
-export function* getTemplateDraft({
+export function* get{{Name}}Draft({
     id
-}: GetTemplateDraftRequestAction): Generator {
-    yield put(TemplatesActions.setIsFetchingTemplateDetails(true))
+}: Get{{Name}}DraftRequestAction): Generator {
+    yield put({{Name}}sActions.setIsFetching{{Name}}Details(true))
     try {
         const [draft, predefinedValues] = (yield all([
-            call(() => fetchTemplate(id)),
+            call(() => fetch{{Name}}(id)),
             call(() => fetchPredefinedValues())
-        ])) as [templateDetails, predefinedValues]
-        yield put(TemplatesActions.setIsFetchingTemplateDetails(false))
-        yield put(TemplatesActions.getTemplateDraftResponse(draft))
+        ])) as [{{name}}Details, predefinedValues]
+        yield put({{Name}}sActions.setIsFetching{{Name}}Details(false))
+        yield put({{Name}}sActions.get{{Name}}DraftResponse(draft))
         yield put(
-            TemplatesActions.getPredefinedValuesResponse(predefinedValues)
+            {{Name}}sActions.getPredefinedValuesResponse(predefinedValues)
         )
     } catch (error) {
-        yield put(TemplatesActions.setIsFetchingTemplateDetails(false))
+        yield put({{Name}}sActions.setIsFetching{{Name}}Details(false))
         yield put(
             NotificationsActions.addNotification({
                 message: 'Error',
@@ -103,18 +103,18 @@ export function* getTemplateDraft({
     }
 }
 
-export function* addTemplate({
+export function* add{{Name}}({
     data,
     publish
-}: AddTemplateRequestAction): Generator {
-    yield put(TemplatesActions.setIsFetchingTemplates(true))
+}: Add{{Name}}RequestAction): Generator {
+    yield put({{Name}}sActions.setIsFetching{{Name}}s(true))
     try {
         const request = publish ? sendPublished : sendDraft
-        const response = (yield call(() => request(data))) as templateDetails
-        yield put(TemplatesActions.setIsFetchingTemplates(false))
-        yield put(TemplatesActions.AddTemplateResponse(response))
+        const response = (yield call(() => request(data))) as {{name}}Details
+        yield put({{Name}}sActions.setIsFetching{{Name}}s(false))
+        yield put({{Name}}sActions.Add{{Name}}Response(response))
     } catch (error) {
-        yield put(TemplatesActions.setIsFetchingTemplates(false))
+        yield put({{Name}}sActions.setIsFetching{{Name}}s(false))
         yield put(
             NotificationsActions.addNotification({
                 message: 'Error',
@@ -124,18 +124,18 @@ export function* addTemplate({
     }
 }
 
-export function* editTemplate({
+export function* edit{{Name}}({
     data,
     publish
-}: EditTemplateRequestAction): Generator {
-    yield put(TemplatesActions.setIsFetchingTemplates(true))
+}: Edit{{Name}}RequestAction): Generator {
+    yield put({{Name}}sActions.setIsFetching{{Name}}s(true))
     try {
         const request = publish ? sendPublished : sendDraft
-        const response = (yield call(() => request(data))) as templateDetails
-        yield put(TemplatesActions.setIsFetchingTemplates(false))
-        yield put(TemplatesActions.EditTemplateResponse(response))
+        const response = (yield call(() => request(data))) as {{name}}Details
+        yield put({{Name}}sActions.setIsFetching{{Name}}s(false))
+        yield put({{Name}}sActions.Edit{{Name}}Response(response))
     } catch (error) {
-        yield put(TemplatesActions.setIsFetchingTemplates(false))
+        yield put({{Name}}sActions.setIsFetching{{Name}}s(false))
         yield put(
             NotificationsActions.addNotification({
                 message: 'Error',
@@ -145,11 +145,11 @@ export function* editTemplate({
     }
 }
 
-export const TemplatesSaga = [
-    takeEvery(ActionTypes.GET_TEMPLATES_REQUEST, getTemplates),
-    takeLatest(ActionTypes.GET_TEMPLATE_DETAILS_REQUEST, getTemplateDetails),
+export const {{Name}}sSaga = [
+    takeEvery(ActionTypes.GET_{{NAME}}S_REQUEST, get{{Name}}s),
+    takeLatest(ActionTypes.GET_{{NAME}}_DETAILS_REQUEST, get{{Name}}Details),
     takeLatest(ActionTypes.GET_PREDEFINED_VALUES_REQUEST, getPredefinedValues),
-    takeLatest(ActionTypes.GET_TEMPLATE_DRAFT_REQUEST, getTemplateDraft),
-    takeEvery(ActionTypes.ADD_TEMPLATE_REQUEST, addTemplate),
-    takeEvery(ActionTypes.EDIT_TEMPLATE_REQUEST, editTemplate)
+    takeLatest(ActionTypes.GET_{{NAME}}_DRAFT_REQUEST, get{{Name}}Draft),
+    takeEvery(ActionTypes.ADD_{{NAME}}_REQUEST, add{{Name}}),
+    takeEvery(ActionTypes.EDIT_{{NAME}}_REQUEST, edit{{Name}})
 ]

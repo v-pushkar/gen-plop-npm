@@ -1,45 +1,45 @@
 import {
-    TemplatesState,
-    GetTemplatesResponseAction,
+    {{Name}}sState,
+    Get{{Name}}sResponseAction,
     ActionTypes,
-    GetTemplateDetailsResponseAction,
+    Get{{Name}}DetailsResponseAction,
     SetIsFetchingAction,
     GetPredefinedValuesResponseAction,
-    GetTemplateDraftResponseAction,
+    Get{{Name}}DraftResponseAction,
     SetIsErrorFetchingAction,
-    SubmitTemplateResponseAction
+    Submit{{Name}}ResponseAction
 } from './types'
 import { updateList } from './utils'
 
-const INITIAL_STATE: TemplatesState = {
-    templatesList: [],
+const INITIAL_STATE: {{Name}}sState = {
+    {{name}}sList: [],
     isFetching: false,
-    templateDetails: null,
+    {{name}}Details: null,
     isFetchingDetails: false,
     predefinedValues: null,
-    templateDraft: null,
+    {{name}}Draft: null,
     isErrorFetchingDetails: false
 }
 
-export type TemplatesAction =
-    | GetTemplatesResponseAction
+export type {{Name}}sAction =
+    | Get{{Name}}sResponseAction
     | SetIsFetchingAction
-    | GetTemplateDetailsResponseAction
+    | Get{{Name}}DetailsResponseAction
     | GetPredefinedValuesResponseAction
-    | GetTemplateDraftResponseAction
+    | Get{{Name}}DraftResponseAction
     | SetIsErrorFetchingAction
-    | SubmitTemplateResponseAction
+    | Submit{{Name}}ResponseAction
 
-export const TemplatesReducer = (
-    state: TemplatesState = INITIAL_STATE,
-    action: TemplatesAction
-): TemplatesState => {
+export const {{Name}}sReducer = (
+    state: {{Name}}sState = INITIAL_STATE,
+    action: {{Name}}sAction
+): {{Name}}sState => {
     switch (action.type) {
-        case ActionTypes.GET_TEMPLATES_RESPONSE:
+        case ActionTypes.GET_{{NAME}}S_RESPONSE:
             return {
                 ...state,
-                templatesList: [
-                    ...(action as GetTemplatesResponseAction).templatesList
+                {{name}}sList: [
+                    ...(action as Get{{Name}}sResponseAction).{{name}}sList
                 ]
             }
         case ActionTypes.SET_IS_FETCHING:
@@ -47,10 +47,10 @@ export const TemplatesReducer = (
                 ...state,
                 isFetching: (action as SetIsFetchingAction).isFetching
             }
-        case ActionTypes.GET_TEMPLATES_DETAILS_RESPONSE:
+        case ActionTypes.GET_{{NAME}}S_DETAILS_RESPONSE:
             return {
                 ...state,
-                templateDetails: (action as GetTemplateDetailsResponseAction)
+                {{name}}Details: (action as Get{{Name}}DetailsResponseAction)
                     .details
             }
         case ActionTypes.SET_IS_FETCHING_DETAILS:
@@ -64,10 +64,10 @@ export const TemplatesReducer = (
                 predefinedValues: (action as GetPredefinedValuesResponseAction)
                     .values
             }
-        case ActionTypes.GET_TEMPLATE_DRAFT_RESPONSE:
+        case ActionTypes.GET_{{NAME}}_DRAFT_RESPONSE:
             return {
                 ...state,
-                templateDraft: (action as GetTemplateDraftResponseAction).draft
+                {{name}}Draft: (action as Get{{Name}}DraftResponseAction).draft
             }
         case ActionTypes.SET_IS_ERROR_FETCHING_DETAILS:
             return {
@@ -75,20 +75,20 @@ export const TemplatesReducer = (
                 isErrorFetchingDetails: (action as SetIsErrorFetchingAction)
                     .isError
             }
-        case ActionTypes.ADD_TEMPLATE_RESPONSE:
+        case ActionTypes.ADD_{{NAME}}_RESPONSE:
             return {
                 ...state,
-                templatesList: [
-                    ...state.templatesList,
-                    (action as SubmitTemplateResponseAction).template
+                {{name}}sList: [
+                    ...state.{{name}}sList,
+                    (action as Submit{{Name}}ResponseAction).{{name}}
                 ]
             }
-        case ActionTypes.EDIT_TEMPLATE_RESPONSE:
+        case ActionTypes.EDIT_{{NAME}}_RESPONSE:
             return {
                 ...state,
-                templatesList: updateList(
-                    state.templatesList,
-                    action as SubmitTemplateResponseAction
+                {{name}}sList: updateList(
+                    state.{{name}}sList,
+                    action as Submit{{Name}}ResponseAction
                 )
             }
         default:

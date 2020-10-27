@@ -1,9 +1,9 @@
-import { template, SubmitTemplateResponseAction } from '.'
+import { {{name}}, Submit{{Name}}ResponseAction } from '.'
 
 export const updateList = (
-    templatesList: template[],
-    action: SubmitTemplateResponseAction
-): template[] =>
-    templatesList.map((item) =>
-        item.id === action.template.id ? action.template : item
+    {{name}}sList: {{name}}[],
+    action: Submit{{Name}}ResponseAction
+): {{name}}[] =>
+    {{name}}sList.map((item) =>
+        item.id === action.{{name}}.id ? action.{{name}} : item
     )
