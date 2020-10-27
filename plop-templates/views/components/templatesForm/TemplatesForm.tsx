@@ -296,7 +296,7 @@ export const {{Name}}sForm: React.FC<Props> = ({
                                             {t('form.notice')}
                                         </p>
                                         <OutlinedInput
-                                            classes={{ input: classes.input }}
+                                            classes={ { input: classes.input } }
                                             fullWidth
                                             placeholder="Type in"
                                             onKeyDown={(e) =>
@@ -372,7 +372,7 @@ export const {{Name}}sForm: React.FC<Props> = ({
                                             )}
                                         </p>
                                         <OutlinedInput
-                                            classes={{ input: classes.input }}
+                                            classes={ { input: classes.input } }
                                             fullWidth
                                             placeholder="Type in"
                                             {...formik.getFieldProps(
@@ -392,7 +392,7 @@ export const {{Name}}sForm: React.FC<Props> = ({
                                             )}
                                         </p>
                                         <OutlinedInput
-                                            classes={{ input: classes.input }}
+                                            classes={ { input: classes.input } }
                                             fullWidth
                                             placeholder="Type in"
                                             {...formik.getFieldProps(
@@ -430,7 +430,7 @@ export const {{Name}}sForm: React.FC<Props> = ({
                                             )}
                                         </p>
                                         <OutlinedInput
-                                            classes={{ input: classes.input }}
+                                            classes={ { input: classes.input } }
                                             fullWidth
                                             placeholder="Type in"
                                             {...formik.getFieldProps(

@@ -91,9 +91,21 @@ const templates = {
     const templatePath = data.other_template ? `${templatesPath}${data.other_template}/`:templatesPath;
     const tplFiles = data.other_template? files[data.other_template]:files;   
     const actions = tplFiles.map(i=>{
+      const fileName = (i)=>{       
+        if(i.indexOf("Template")){
+            return i.replace('Template', data.Name)
+        }
+        if(i.indexOf("template")){
+            return i.replace('template', data.name)
+        }
+        if(i.indexOf("TEMPLATE")){
+            return i.replace('TEMPLATE', data.NAME)
+        }
+        return i
+      }
         return {
             type,
-            path:path+i,
+            path:path+fileName(i),
             templateFile: templatePath+i,
         }
     })
