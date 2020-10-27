@@ -52,7 +52,7 @@ export const Edit{{Name}}: React.FC<Props> = ({
     }
 
     return (
-        <div data-testid="edit-{{name}}" style={{ height: '100%' }}>
+        <div data-testid="edit-{{name}}" style={ { height: '100%' }}>
             {predefinedValues && {{name}}Draft && (
                 <{{Name}}sForm
                     onClose={onClose}

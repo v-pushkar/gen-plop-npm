@@ -42,7 +42,7 @@ export const CreateNew{{Name}}: React.FC<Props> = ({
         add{{Name}}(draft, publish)
     }
     return (
-        <div data-testid="create-new-{{name}}" style={{ height: '100%' }}>
+        <div data-testid="create-new-{{name}}" style={ { height: '100%' }}>
             {predefinedValues && (
                 <{{Name}}sForm
                     onClose={onClose}

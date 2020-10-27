@@ -17,7 +17,7 @@ export const createColumns = (onModalOpen: Function) => {
                 <div
                     role="button"
                     tabIndex={0}
-                    style={{ cursor: 'pointer', outline: 'none' }}
+                    style={ { cursor: 'pointer', outline: 'none' }}
                     className={classes.cell}
                     onClick={() =>
                         onModalOpen(row.original.id, ModalContent.DETAILS)
@@ -83,7 +83,7 @@ export const createColumns = (onModalOpen: Function) => {
             Cell: ({ row }: any) => (
                 <div
                     className={classes.cell}
-                    style={{ outline: 'none' }}
+                    style={ { outline: 'none' }}
                     role="button"
                     tabIndex={0}
                     onClick={

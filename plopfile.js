@@ -104,8 +104,7 @@ const templates = {
 
 
 module.exports = function (plop) {
-    // controller generator
-    // plop.setHelper('plpo_', t => `{${t}`);
+    
     Object.keys(templates).forEach(key=>{
         const {description, prompts}=templates[key]
         plop.setGenerator(key, {
