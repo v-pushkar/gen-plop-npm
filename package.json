@@ -1,0 +1,23 @@
+{
+  "name": "plop-generator",
+  "version": "1.0.0",
+  "description": "plop generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "plop": "plop"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/v-pushkar/plop-generator.git"
+  },
+  "author": "vp",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/v-pushkar/plop-generator/issues"
+  },
+  "homepage": "https://github.com/v-pushkar/plop-generator#readme",
+  "devDependencies": {
+    "plop": "^2.7.4"
+  }
+}
