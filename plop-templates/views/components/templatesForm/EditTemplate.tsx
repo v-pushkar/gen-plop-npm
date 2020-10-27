@@ -1,64 +1,64 @@
 import React, { useEffect } from 'react'
 import { CircularProgress } from '@material-ui/core'
 import { useSharedStyles } from '../sharedStyles'
-import { predefinedValues, templateDetails, bosTemplateData } from 'store'
-import { TemplatesForm } from './TemplatesForm'
+import { predefinedValues, {{name}}Details, bos{{Name}}Data } from 'store'
+import { {{Name}}sForm } from './{{Name}}sForm'
 
 type Props = {
     onClose: () => void
-    getTemplateDraft: (id: number) => void
-    cleanTemplateDraft: () => void
-    editTemplate: (data: templateDetails, publish: boolean) => void
+    get{{Name}}Draft: (id: number) => void
+    clean{{Name}}Draft: () => void
+    edit{{Name}}: (data: {{name}}Details, publish: boolean) => void
     predefinedValues: predefinedValues | null
     isFetchingDetails: boolean
     id: number
-    templateDraft: templateDetails | null
+    {{name}}Draft: {{name}}Details | null
 }
 
-export const EditTemplate: React.FC<Props> = ({
+export const Edit{{Name}}: React.FC<Props> = ({
     onClose,
-    getTemplateDraft,
-    cleanTemplateDraft,
-    editTemplate,
+    get{{Name}}Draft,
+    clean{{Name}}Draft,
+    edit{{Name}},
     predefinedValues,
     isFetchingDetails,
     id,
-    templateDraft
+    {{name}}Draft
 }) => {
     const sharedClasses = useSharedStyles()
 
     useEffect(() => {
-        getTemplateDraft(id)
+        get{{Name}}Draft(id)
         return () => {
-            cleanTemplateDraft()
+            clean{{Name}}Draft()
         }
     }, [])
 
-    const updateTemplateData = (data: bosTemplateData, publish: boolean) => {
-        const draft: templateDetails = {
-            ...templateDraft!,
-            bosTemplateData: {
+    const update{{Name}}Data = (data: bos{{Name}}Data, publish: boolean) => {
+        const draft: {{name}}Details = {
+            ...{{name}}Draft!,
+            bos{{Name}}Data: {
                 ...data
             }
         }
-        editTemplate(draft, publish)
+        edit{{Name}}(draft, publish)
     }
 
-    const initialValues: bosTemplateData = {
-        physicalPlaces: templateDraft?.bosTemplateData.physicalPlaces || '',
-        ppes: templateDraft?.bosTemplateData.ppes || [],
-        notices: templateDraft?.bosTemplateData.notices || [],
-        activities: templateDraft?.bosTemplateData.activities || []
+    const initialValues: bos{{Name}}Data = {
+        physicalPlaces: {{name}}Draft?.bos{{Name}}Data.physicalPlaces || '',
+        ppes: {{name}}Draft?.bos{{Name}}Data.ppes || [],
+        notices: {{name}}Draft?.bos{{Name}}Data.notices || [],
+        activities: {{name}}Draft?.bos{{Name}}Data.activities || []
     }
 
     return (
-        <div data-testid="edit-template" style={{ height: '100%' }}>
-            {predefinedValues && templateDraft && (
-                <TemplatesForm
+        <div data-testid="edit-{{name}}" style={{ height: '100%' }}>
+            {predefinedValues && {{name}}Draft && (
+                <{{Name}}sForm
                     onClose={onClose}
-                    submitTemplate={updateTemplateData}
+                    submit{{Name}}={update{{Name}}Data}
                     predefinedValues={predefinedValues}
-                    title="Edit template"
+                    title="Edit {{name}}"
                     initialValuesPassed={initialValues}
                 />
             )}

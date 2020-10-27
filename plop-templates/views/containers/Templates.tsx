@@ -67,8 +67,8 @@ export const {{Name}}s: React.FC = () => {
                 clean{{Name}}Draft={clean{{Name}}Draft}
                 getPredefinedValues={getPredefinedValues}
                 cleanPredefinedValues={cleanPredefinedValues}
-                add{{Name}}={add{{Name}}}
-                edit{{Name}}={edit{{Name}}}
+                add{{Name}}={add{{Name}} }
+                edit{{Name}}={edit{{Name}} }
                 isFetchingDetails={isFetchingDetails}
                 {{name}}Details={{{name}}Details}
                 predefinedValues={predefinedValues}

@@ -1,38 +1,38 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import { CreateNewTemplate } from './CreateNewTemplate'
-import { mockTemplatePredefinedValues } from 'store/ducks/Templates/mockedData'
+import { CreateNew{{Name}} } from './CreateNew{{Name}}'
+import { mock{{Name}}PredefinedValues } from 'store/ducks/{{Name}}s/mockedData'
 
 const onClose = jest.fn()
 const getPredefinedValues = jest.fn()
 const cleanPredefinedValues = jest.fn()
-const addTemplate = jest.fn()
+const add{{Name}} = jest.fn()
 jest.mock('react-i18next', () => ({
     useTranslation: () => ({ t: (key: any) => key })
 }))
 
-describe('CreateNewTemplate component unit test', () => {
+describe('CreateNew{{Name}} component unit test', () => {
     it('should test if renders without crashing and displays wrapper', () => {
         const { queryByTestId } = render(
-            <CreateNewTemplate
+            <CreateNew{{Name}}
                 onClose={onClose}
                 getPredefinedValues={getPredefinedValues}
                 cleanPredefinedValues={cleanPredefinedValues}
-                addTemplate={addTemplate}
+                add{{Name}}={add{{Name}} }
                 predefinedValues={null}
                 isFetchingDetails={true}
             />
         )
-        expect(queryByTestId('create-new-template')).toBeInTheDocument()
+        expect(queryByTestId('create-new-{{name}}')).toBeInTheDocument()
     })
 
     it('should fetch predefinedValues on init and show spinner', () => {
         const { queryByTestId } = render(
-            <CreateNewTemplate
+            <CreateNew{{Name}}
                 onClose={onClose}
                 getPredefinedValues={getPredefinedValues}
                 cleanPredefinedValues={cleanPredefinedValues}
-                addTemplate={addTemplate}
+                add{{Name}}={add{{Name}} }
                 predefinedValues={null}
                 isFetchingDetails={true}
             />
@@ -41,17 +41,17 @@ describe('CreateNewTemplate component unit test', () => {
         expect(queryByTestId('loading-details')).toBeInTheDocument()
     })
 
-    it('should render TemplatesForm', () => {
+    it('should render {{Name}}sForm', () => {
         const { queryByTestId } = render(
-            <CreateNewTemplate
+            <CreateNew{{Name}}
                 onClose={onClose}
                 getPredefinedValues={getPredefinedValues}
                 cleanPredefinedValues={cleanPredefinedValues}
-                addTemplate={addTemplate}
-                predefinedValues={mockTemplatePredefinedValues}
+                add{{Name}}={add{{Name}} }
+                predefinedValues={mock{{Name}}PredefinedValues}
                 isFetchingDetails={false}
             />
         )
-        expect(queryByTestId('templates-form')).toBeInTheDocument()
+        expect(queryByTestId('{{name}}s-form')).toBeInTheDocument()
     })
 })

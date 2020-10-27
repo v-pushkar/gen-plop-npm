@@ -1,1 +1,0 @@
-const component:string = "test {{name}} {{Name}} {{NAME}}component"

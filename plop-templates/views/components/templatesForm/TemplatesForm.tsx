@@ -11,9 +11,9 @@ import { Formik, Form, FormikProps } from 'formik'
 import clsx from 'clsx'
 import * as Yup from 'yup'
 
-import { predefinedValues, bosTemplateData, category } from 'store'
+import { predefinedValues, bos{{Name}}Data, category } from 'store'
 import { uploadFile } from 'Services/File/fetch'
-import { getinitialValues, createTemplateData } from './utils'
+import { getinitialValues, create{{Name}}Data } from './utils'
 import {
     BasicInput,
     BasicFormikFileInput,
@@ -63,15 +63,15 @@ export type formValues = {
 
 type Props = {
     onClose: () => void
-    submitTemplate: (data: bosTemplateData, publish: boolean) => void
+    submit{{Name}}: (data: bos{{Name}}Data, publish: boolean) => void
     predefinedValues: predefinedValues
     title: string
-    initialValuesPassed?: bosTemplateData
+    initialValuesPassed?: bos{{Name}}Data
 }
 
-export const TemplatesForm: React.FC<Props> = ({
+export const {{Name}}sForm: React.FC<Props> = ({
     onClose,
-    submitTemplate,
+    submit{{Name}},
     predefinedValues,
     title,
     initialValuesPassed
@@ -106,8 +106,8 @@ export const TemplatesForm: React.FC<Props> = ({
     }
 
     const onSubmit = (values: formValues) => {
-        submitTemplate(
-            createTemplateData(values, predefinedValues),
+        submit{{Name}}(
+            create{{Name}}Data(values, predefinedValues),
             values.publish!
         )
         onClose()
@@ -140,7 +140,7 @@ export const TemplatesForm: React.FC<Props> = ({
     }
 
     return (
-        <div className={sharedClasses.wrapper} data-testid="templates-form">
+        <div className={sharedClasses.wrapper} data-testid="{{name}}s-form">
             <div className={sharedClasses.header}>
                 <span>
                     <div className={sharedClasses.ellipsisText}>{title}</div>
@@ -149,7 +149,7 @@ export const TemplatesForm: React.FC<Props> = ({
                     onClick={onClose}
                     role="button"
                     tabIndex={0}
-                    data-testid="templates-form-close-icon"
+                    data-testid="{{name}}s-form-close-icon"
                 >
                     <i
                         className={
@@ -466,7 +466,7 @@ export const TemplatesForm: React.FC<Props> = ({
                                 fontColor={colors.greyDarkNinth}
                                 variant="contained"
                                 onClick={onClose}
-                                data-testid="templates-form-close-button"
+                                data-testid="{{name}}s-form-close-button"
                             >
                                 {t('button.close')}
                             </ColoredButton>
@@ -482,7 +482,7 @@ export const TemplatesForm: React.FC<Props> = ({
                                     }
                                     onSubmit(values)
                                 }}
-                                data-testid="templates-form-save"
+                                data-testid="{{name}}s-form-save"
                             >
                                 {t('button.save')}
                             </ColoredButton>
@@ -494,7 +494,7 @@ export const TemplatesForm: React.FC<Props> = ({
                                     formik.setFieldValue('publish', true)
                                     setTimeout(() => formik.handleSubmit(), 0)
                                 }}
-                                data-testid="templates-form-publish"
+                                data-testid="{{name}}s-form-publish"
                             >
                                 {t('button.publish')}
                             </PrimaryButton>

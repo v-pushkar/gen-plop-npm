@@ -3,14 +3,14 @@ import moment from 'moment'
 import { useTranslation as translation } from 'react-i18next'
 
 import { getColumnsStyles } from './styles'
-import { ModalContent } from './TemplatesList'
+import { ModalContent } from './{{Name}}sList'
 
 export const createColumns = (onModalOpen: Function) => {
     const classes = getColumnsStyles()
     const { t } = translation()
     const columns = [
         {
-            Header: () => <div>{t('table.templateName')}</div>,
+            Header: () => <div>{t('table.{{name}}Name')}</div>,
             className: classes.header,
             accessor: 'region',
             Cell: ({ row }: any) => (

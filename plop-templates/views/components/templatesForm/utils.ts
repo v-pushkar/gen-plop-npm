@@ -1,15 +1,15 @@
 import {
-    bosTemplateData,
+    bos{{Name}}Data,
     predefinedValues,
     notice,
     picture,
     category,
     activity
 } from 'store'
-import { formValues } from './TemplatesForm'
+import { formValues } from './{{Name}}sForm'
 
 export const getinitialValues = (
-    initialValuesPassed: bosTemplateData | undefined
+    initialValuesPassed: bos{{Name}}Data | undefined
 ): formValues => ({
     publish: null,
     department: initialValuesPassed?.physicalPlaces || '',
@@ -60,10 +60,10 @@ export const getinitialValues = (
     ]
 })
 
-export const createTemplateData = (
+export const create{{Name}}Data = (
     values: formValues,
     predefinedValues: predefinedValues
-): bosTemplateData => {
+): bos{{Name}}Data => {
     const { department, ppes, globalNotices, localNotices, activities } = values
 
     const tmpActivities: activity[] = activities.map((item, index) => {
@@ -117,7 +117,7 @@ export const createTemplateData = (
         (item) => localNotices.map(Number).includes(item.id)
     )
 
-    const data: bosTemplateData = {
+    const data: bos{{Name}}Data = {
         physicalPlaces: department,
         ppes: predefinedValues.ppes.filter((item) =>
             ppes.map(Number).includes(item.id)

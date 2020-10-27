@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { CircularProgress, Divider } from '@material-ui/core'
-import { {{name}}Details, activity } from 'store/ducks/{{Name}}s'
+import { rtyryryDetails, activity } from 'store/ducks/Rtyryrys'
 
 import { ActivityItem } from './ActivityItem'
 import { useStyles } from './styles'
@@ -9,30 +9,30 @@ import { PrimaryButton } from 'views/Components/Common'
 
 type Props = {
     onClose: () => void
-    get{{Name}}Details: (id: number) => void
-    clean{{Name}}Details: () => void
+    getRtyryryDetails: (id: number) => void
+    cleanRtyryryDetails: () => void
     id: number
     isFetchingDetails: boolean
     isErrorFetchingDetails: boolean
-    {{name}}Details: {{name}}Details | null
+    rtyryryDetails: rtyryryDetails | null
 }
 
-export const {{Name}}Details: React.FC<Props> = ({
+export const RtyryryDetails: React.FC<Props> = ({
     onClose,
-    get{{Name}}Details,
-    clean{{Name}}Details,
+    getRtyryryDetails,
+    cleanRtyryryDetails,
     id,
     isFetchingDetails,
-    {{name}}Details,
+    rtyryryDetails,
     isErrorFetchingDetails
 }) => {
     const classes = useStyles()
     const sharedClasses = useSharedStyles()
 
     useEffect(() => {
-        get{{Name}}Details(id)
+        getRtyryryDetails(id)
         return () => {
-            clean{{Name}}Details()
+            cleanRtyryryDetails()
         }
     }, [])
 
@@ -40,9 +40,9 @@ export const {{Name}}Details: React.FC<Props> = ({
         if (isErrorFetchingDetails) onClose()
     }, [isErrorFetchingDetails])
 
-    if ({{name}}Details) {
-        const { bos{{Name}}Data, author, name } = {{name}}Details
-        const { physicalPlaces } = {{name}}Details.bos{{Name}}Data
+    if (rtyryryDetails) {
+        const { bosRtyryryData, author, name } = rtyryryDetails
+        const { physicalPlaces } = rtyryryDetails.bosRtyryryData
 
         const detailsInfo = [
             {
@@ -56,39 +56,39 @@ export const {{Name}}Details: React.FC<Props> = ({
             {
                 key: "Required PPE's:",
                 value:
-                    bos{{Name}}Data.ppes &&
-                    bos{{Name}}Data.ppes
+                    bosRtyryryData.ppes &&
+                    bosRtyryryData.ppes
                         .map((ppe) => ppe.contentPath)
                         .join(', ')
             },
             {
                 key: 'Notices:',
                 value:
-                    bos{{Name}}Data.notices &&
-                    bos{{Name}}Data.notices
+                    bosRtyryryData.notices &&
+                    bosRtyryryData.notices
                         .map((notice) => notice.title)
                         .join(', ')
             },
             {
                 key: 'Activities:',
                 value:
-                    bos{{Name}}Data.activities &&
-                    bos{{Name}}Data.activities
+                    bosRtyryryData.activities &&
+                    bosRtyryryData.activities
                         .map((activity) => activity.category?.value)
                         .join(', ')
             },
             {
                 key: 'Physical places',
                 value:
-                    bos{{Name}}Data.physicalPlaces &&
-                    bos{{Name}}Data.physicalPlaces
+                    bosRtyryryData.physicalPlaces &&
+                    bosRtyryryData.physicalPlaces
             }
         ]
 
         return (
             <div
                 className={sharedClasses.wrapper}
-                data-testid="{{name}}-details"
+                data-testid="rtyryry-details"
             >
                 <div className={sharedClasses.header}>
                     <span>
@@ -130,7 +130,7 @@ export const {{Name}}Details: React.FC<Props> = ({
                         ))}
                     </div>
                     <div className={sharedClasses.shadedWrapper}>
-                        {bos{{Name}}Data?.activities.map((item: activity) => (
+                        {bosRtyryryData?.activities.map((item: activity) => (
                             <ActivityItem key={item.id} activity={item} />
                         ))}
                     </div>

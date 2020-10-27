@@ -1,6 +1,12 @@
 'use strict';
 const path = require('path');
 const fs = require("fs")
+const tplFolder = "/plop-templates/"
+const tplFolderPath = fs.readdirSync(__dirname+tplFolder)
+
+
+const getFiles = (_path) => fs.readdirSync(tplFolderPath + _path);
+
 
 const templates = {
     view_component:{
@@ -26,9 +32,9 @@ const templates = {
               }
         ],
       files:{
-        templateDetails:["ActivityItem.tsx","ActivityItem.unit.test.tsx"],
-        templatesForm:[],
-        templatesList:[],
+        templateDetails:["ActivityItem.tsx","ActivityItem.unit.test.tsx","styles.ts","TemplateDetails.tsx", "TemplateDetails.unit.test.tsx"],        
+        templatesForm:["CreateNewTemplate.tsx","CreateNewTemplate.unit.test.tsx","EditTemplate.tsx","EditTemplate.unit.test.tsx","styles.ts","TemplatesForm.tsx","TemplatesForm.unit.test.tsx","utils.ts"],
+        templatesList:["columns.tsx","styles.ts"],
 
       },
       destPath:"src/views/Сomponents/",
@@ -83,7 +89,7 @@ const templates = {
     const {destPath, templatesPath, files} = options;
     const path = data.path? `${data.path}/${data.name}/` : `${destPath}/${data.name}/`;
     const templatePath = data.other_template ? `${templatesPath}${data.other_template}/`:templatesPath;
-    const tplFiles = data.other_template? files[data.other_template]:files;
+    const tplFiles = data.other_template? files[data.other_template]:files;   
     const actions = tplFiles.map(i=>{
         return {
             type,
@@ -99,7 +105,7 @@ const templates = {
 
 module.exports = function (plop) {
     // controller generator
-
+    // plop.setHelper('plpo_', t => `{${t}`);
     Object.keys(templates).forEach(key=>{
         const {description, prompts}=templates[key]
         plop.setGenerator(key, {

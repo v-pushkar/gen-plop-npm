@@ -1,23 +1,23 @@
 import React, { useEffect } from 'react'
 import { CircularProgress } from '@material-ui/core'
 
-import { predefinedValues, bosTemplateData, templateDraft } from 'store'
-import { TemplatesForm } from './TemplatesForm'
+import { predefinedValues, bos{{Name}}Data, {{name}}Draft } from 'store'
+import { {{Name}}sForm } from './{{Name}}sForm'
 import { useSharedStyles } from '../sharedStyles'
 
 type Props = {
     onClose: () => void
     getPredefinedValues: () => void
     cleanPredefinedValues: () => void
-    addTemplate: (data: templateDraft, publish: boolean) => void
+    add{{Name}}: (data: {{name}}Draft, publish: boolean) => void
     predefinedValues: predefinedValues | null
     isFetchingDetails: boolean
 }
-export const CreateNewTemplate: React.FC<Props> = ({
+export const CreateNew{{Name}}: React.FC<Props> = ({
     onClose,
     getPredefinedValues,
     cleanPredefinedValues,
-    addTemplate,
+    add{{Name}},
     predefinedValues,
     isFetchingDetails
 }) => {
@@ -30,25 +30,25 @@ export const CreateNewTemplate: React.FC<Props> = ({
         }
     }, [])
 
-    const submitTemplate = (data: bosTemplateData, publish: boolean) => {
-        const draft: templateDraft = {
+    const submit{{Name}} = (data: bos{{Name}}Data, publish: boolean) => {
+        const draft: {{name}}Draft = {
             region: 'testRegion',
             area: 'testArea',
-            bosTemplateData: {
+            bos{{Name}}Data: {
                 ...data
             },
             inUse: false
         }
-        addTemplate(draft, publish)
+        add{{Name}}(draft, publish)
     }
     return (
-        <div data-testid="create-new-template" style={{ height: '100%' }}>
+        <div data-testid="create-new-{{name}}" style={{ height: '100%' }}>
             {predefinedValues && (
-                <TemplatesForm
+                <{{Name}}sForm
                     onClose={onClose}
-                    submitTemplate={submitTemplate}
+                    submit{{Name}}={submit{{Name}} }
                     predefinedValues={predefinedValues}
-                    title="Create new template"
+                    title="Create new {{name}}"
                 />
             )}
             {isFetchingDetails && (

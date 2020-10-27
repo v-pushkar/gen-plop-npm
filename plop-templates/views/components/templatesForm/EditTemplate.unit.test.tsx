@@ -1,67 +1,67 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import { EditTemplate } from './EditTemplate'
+import { Edit{{Name}} } from './Edit{{Name}}'
 import {
-    mockTemplateDetails,
-    mockTemplatePredefinedValues
-} from 'store/ducks/Templates/mockedData'
+    mock{{Name}}Details,
+    mock{{Name}}PredefinedValues
+} from 'store/ducks/{{Name}}s/mockedData'
 
 const onClose = jest.fn()
-const getTemplateDraft = jest.fn()
-const cleanTemplateDraft = jest.fn()
-const editTemplate = jest.fn()
+const get{{Name}}Draft = jest.fn()
+const clean{{Name}}Draft = jest.fn()
+const edit{{Name}} = jest.fn()
 jest.mock('react-i18next', () => ({
     useTranslation: () => ({ t: (key: any) => key })
 }))
 
-describe('EditTemplate component unit test', () => {
+describe('Edit{{Name}} component unit test', () => {
     it('should test if renders without crashing and displays wrapper', () => {
         const { queryByTestId } = render(
-            <EditTemplate
+            <Edit{{Name}}
                 onClose={onClose}
-                getTemplateDraft={getTemplateDraft}
-                cleanTemplateDraft={cleanTemplateDraft}
-                editTemplate={editTemplate}
+                get{{Name}}Draft={get{{Name}}Draft}
+                clean{{Name}}Draft={clean{{Name}}Draft}
+                edit{{Name}}={edit{{Name}} }
                 predefinedValues={null}
                 isFetchingDetails={true}
                 id={1}
-                templateDraft={mockTemplateDetails}
+                {{name}}Draft={mock{{Name}}Details}
             />
         )
-        expect(queryByTestId('edit-template')).toBeInTheDocument()
+        expect(queryByTestId('edit-{{name}}')).toBeInTheDocument()
     })
 
     it('should fetch predefinedValues on init and show spinner', () => {
         const { queryByTestId } = render(
-            <EditTemplate
+            <Edit{{Name}}
                 onClose={onClose}
-                getTemplateDraft={getTemplateDraft}
-                cleanTemplateDraft={cleanTemplateDraft}
-                editTemplate={editTemplate}
+                get{{Name}}Draft={get{{Name}}Draft}
+                clean{{Name}}Draft={clean{{Name}}Draft}
+                edit{{Name}}={edit{{Name}} }
                 predefinedValues={null}
                 isFetchingDetails={true}
                 id={1}
-                templateDraft={mockTemplateDetails}
+                {{name}}Draft={mock{{Name}}Details}
             />
         )
-        expect(getTemplateDraft).toHaveBeenCalled()
+        expect(get{{Name}}Draft).toHaveBeenCalled()
         expect(queryByTestId('loading-details')).toBeInTheDocument()
     })
 
-    it('should render TemplatesForm', () => {
+    it('should render {{Name}}sForm', () => {
         const { queryByTestId } = render(
-            <EditTemplate
+            <Edit{{Name}}
                 onClose={onClose}
-                getTemplateDraft={getTemplateDraft}
-                cleanTemplateDraft={cleanTemplateDraft}
-                editTemplate={editTemplate}
-                predefinedValues={mockTemplatePredefinedValues}
+                get{{Name}}Draft={get{{Name}}Draft}
+                clean{{Name}}Draft={clean{{Name}}Draft}
+                edit{{Name}}={edit{{Name}} }
+                predefinedValues={mock{{Name}}PredefinedValues}
                 isFetchingDetails={false}
                 id={1}
-                templateDraft={mockTemplateDetails}
+                {{name}}Draft={mock{{Name}}Details}
             />
         )
 
-        expect(queryByTestId('templates-form')).toBeInTheDocument()
+        expect(queryByTestId('{{name}}s-form')).toBeInTheDocument()
     })
 })
