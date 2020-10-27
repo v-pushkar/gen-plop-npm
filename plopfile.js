@@ -7,6 +7,13 @@ const templates = {
         description: 'create view component',
         prompts:[
             {
+                type: "list",
+                name: "other_template",
+                message: "What type of component do you want create?",
+                choices: ["templateDetails","templatesForm", "templatesList"],
+                
+              },
+            {
                 type: "input",
                 name: "name",
                 message: "Input the name for redux module:",
@@ -18,7 +25,12 @@ const templates = {
                 message: "Input path for new files (optional):",       
               }
         ],
-      files:["component.ts"],
+      files:{
+        templateDetails:["ActivityItem.tsx","ActivityItem.unit.test.tsx"],
+        templatesForm:[],
+        templatesList:[],
+
+      },
       destPath:"src/views/Сomponents/",
       templatesPath:"plop-templates/views/components/"
     },
@@ -37,7 +49,7 @@ const templates = {
                 message: "Input path for new files (optional):",       
               }
         ],
-      files:["view.js", "test.js"],
+      files:["Templates.tsx"],
       destPath:"src/views/Сontainers/",
       templatesPath:"plop-templates/views/containers/"
     },
@@ -70,12 +82,13 @@ const templates = {
     data.NAME = data.name.toUpperCase()
     const {destPath, templatesPath, files} = options;
     const path = data.path? `${data.path}/${data.name}/` : `${destPath}/${data.name}/`;
-    
-    const actions = files.map(i=>{
+    const templatePath = data.other_template ? `${templatesPath}${data.other_template}/`:templatesPath;
+    const tplFiles = data.other_template? files[data.other_template]:files;
+    const actions = tplFiles.map(i=>{
         return {
             type,
             path:path+i,
-            templateFile: templatesPath+i,
+            templateFile: templatePath+i,
         }
     })
     return actions

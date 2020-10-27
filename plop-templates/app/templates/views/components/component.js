@@ -1,1 +1,0 @@
-const component = "test <%= name %> component"
