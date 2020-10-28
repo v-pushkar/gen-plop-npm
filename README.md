@@ -34,6 +34,7 @@ run:
 ## Howe create templates obj:
 
 create object looks like this: </b>
+every element in object it will be new option for select. List of selections well be created with keys in this obj </b>
 ```javascript
 const templates = {
 views_container:{
@@ -103,7 +104,7 @@ if add arr with template files:</b>
     
     files:["ActivityItem.tsx","ActivityItem.unit.test.tsx","styles.ts","TemplateDetails.tsx", "TemplateDetails.unit.test.tsx"]
 ```
-every element in object it will be new option for select. List of selections well be created with keys in this obj </b>
+
 
 element | type | description
 --------| -----|-------
