@@ -60,7 +60,7 @@ export const {{Name}}s: React.FC = () => {
         <div data-testid="{{name}}s">
             <{{Name}}sList
                 loadingData={isFetching}
-                data={{{name}}sList}
+                data={ {{name}}sList}
                 get{{Name}}Details={get{{Name}}Details}
                 get{{Name}}Draft={get{{Name}}Draft}
                 clean{{Name}}Details={clean{{Name}}Details}
@@ -70,9 +70,9 @@ export const {{Name}}s: React.FC = () => {
                 add{{Name}}={add{{Name}} }
                 edit{{Name}}={edit{{Name}} }
                 isFetchingDetails={isFetchingDetails}
-                {{name}}Details={{{name}}Details}
+                {{name}}Details={ {{name}}Details}
                 predefinedValues={predefinedValues}
-                {{name}}Draft={{{name}}Draft}
+                {{name}}Draft={ {{name}}Draft}
                 isErrorFetchingDetails={isErrorFetchingDetails}
             />
         </div>

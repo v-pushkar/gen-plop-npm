@@ -61,7 +61,6 @@ const templates = {
     },
  
     redux_store:{
-
         description: 'create redux components',
         prompts:[
             {
@@ -115,17 +114,15 @@ const templates = {
 
 
 
-module.exports = function (plop) {
-    
+module.exports = function (plop) {    
     Object.keys(templates).forEach(key=>{
         const {description, prompts}=templates[key]
         plop.setGenerator(key, {
             description,
             prompts,
-        actions: data=>actionsCreator(data, "add", {...templates[key]})    
-       
-            
+        actions: data=>actionsCreator(data, "add", {...templates[key]})   
+                   
         })
-    })    
+    })   
    
 };
