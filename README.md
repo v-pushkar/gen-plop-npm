@@ -60,7 +60,6 @@ every element in object it will be new option for select. List of selections wel
 
 element | type | description
 --------| -----|-------
-
 description | {string} | description for actions
 prompts | {Arr} | array of prompts more info about propmpt options [inquirer.js](https://github.com/SBoudrias/Inquirer.js#inquirerregisterpromptname-prompt)
  
