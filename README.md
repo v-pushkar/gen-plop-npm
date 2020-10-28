@@ -57,7 +57,7 @@ views_container:{
     },
 }
 ```
-**`other_template` example : **
+`other_template` example :
 
 ```javascript
  prompts:[
@@ -77,6 +77,31 @@ views_container:{
 
       }
       ...
+```
+
+`files` variants for add templates files to generator : </b>
+
+if use "other_template" option:
+```javascript
+        
+        
+              files:{
+        templateDetails:["ActivityItem.tsx","ActivityItem.unit.test.tsx","styles.ts","TemplateDetails.tsx", "TemplateDetails.unit.test.tsx"],        
+        templateDetails:["ActivityItem.tsx","ActivityItem.unit.test.tsx","styles.ts","TemplateDetails.tsx", "TemplateDetails.unit.test.tsx"],   
+           }
+    
+```
+
+if add just folder with templates:</b>
+```javascript
+    
+    files:"templatefolder"
+```
+if add arr with template files:</b>
+
+```javascript
+    
+    files:["ActivityItem.tsx","ActivityItem.unit.test.tsx","styles.ts","TemplateDetails.tsx", "TemplateDetails.unit.test.tsx"]
 ```
 every element in object it will be new option for select. List of selections well be created with keys in this obj </b>
 
