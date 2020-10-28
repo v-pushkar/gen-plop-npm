@@ -1,6 +1,6 @@
 # generator with plop
 
-link to [plop](https://plopjs.com/)
+generator for build new files with   [plopjs](https://plopjs.com/)
 
 Add plop to your project
 
@@ -28,3 +28,5 @@ Add comand to scripts in package.json </br>
 run:
 
 ### `yarn run plop`
+
+
