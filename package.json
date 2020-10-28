@@ -19,5 +19,8 @@
   },
   "dependencies": {
     "plop": "^2.7.4"
-  }
+  },
+  "keywords": [
+    "npm","generator","plop","generator-plop-tt"
+  ]
 }
