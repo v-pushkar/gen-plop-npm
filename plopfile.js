@@ -73,14 +73,15 @@ const templates = {
                 message: "Input path for new files (optional):",       
               }
         ],
-      files:"store",
-      // files:["actions.ts", "actions.unit.test.ts", "index.ts", "mockedData.ts","reducer.ts","reducer.unit.test.ts","saga.ts","saga.unit.test.ts","types.ts","utils.ts"],
+      files:"store",      
       destPath:"src/store/",
       templatesPath:"plop-templates/store/"
     }
   
   }
 
+
+  
   const getFilesForActions = (names)=>{
     if(typeof names === "string"){
       return getFilesNames(names)
