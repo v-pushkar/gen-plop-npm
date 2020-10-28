@@ -2,17 +2,37 @@
 
 generator for build new files with   [plopjs](https://plopjs.com/)
 
-Add plop to your project
+Add generator to your project
 
-### `npm install --save-dev plop`
+### `npm install generator-plop-tt`
 
-or
 
-### `yarn add plop`
 
-App temlates to you project (folder: plop-templates)
+Add temlates to you project </b>
 
-Create / add a plopfile.js at the root of your project </b>
+use {{name}},{{Name}}, {{NAME}} in you template files for add nemes</b>
+if you get a conflict with other brackets in code, use buckspace for separate bracets:</b>
+const any = {any1, {{name}}} - get a conflict </b>
+const any = {any1, {{name}} } - fix conflict </b>
+
+
+
+Create / add a `plopfile.js` at the root of your project </b>
+add to file templates creator data, and generator function</b>
+plopfile.js:
+```javascript
+
+'use strict';
+const templates = require("./plop-templates")
+const genCreatot = require('generator-plop-tt')
+const tplFolder = "plop-templates"
+
+module.exports = function (plop) {    
+    genCreatot(templates, tplFolder, plop)
+   
+};
+
+```
 
 Add comand to scripts in package.json </br>
 

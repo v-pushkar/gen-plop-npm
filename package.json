@@ -1,8 +1,9 @@
 {
   "name": "generator-plop-tt",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "files generator with plop",
   "main": "index.js",
+  
   "repository": {
     "type": "git",
     "url": "git+https://github.com/v-pushkar/gen-plop-npm"
@@ -13,6 +14,9 @@
     "url": "https://github.com/v-pushkar/plop-generator/issues"
   },
   "homepage": "https://github.com/v-pushkar/gen-plop-npm#readme",
+  "devDependencies": {
+    "plop": "^2.7.4"
+  },
   "dependencies": {
     "plop": "^2.7.4"
   }
