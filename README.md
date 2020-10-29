@@ -6,7 +6,6 @@ Add generator to your project
 
 ### `npm install generator-plop-tt`
 <br/>
-<br/>
 
 
 Add temlates to you project <br/>
@@ -41,6 +40,7 @@ Add comand to scripts in package.json <br/>
 
 // package.json
 <br/>
+
 ```javascript
 
 "scripts": {
@@ -48,10 +48,12 @@ Add comand to scripts in package.json <br/>
 }
 
 ```
-run:
+run generator with plop:
 
 ### `npm run plop`
 
+<br/>
+if plop installed globally with `npm install -g plop`, use short command `plop`<br/>
 
 
 ## Howe create templates obj:
@@ -81,7 +83,9 @@ views_container:{
     },
 }
 ```
-`other_template` example :
+
+if you have in parent template folder child folders with different templates, add to prompt option `other_template` with choices child folders.  <br/>
+with `other_template` example :
 
 ```javascript
  prompts:[
@@ -105,9 +109,9 @@ views_container:{
 
 `files` variants for add templates files to generator : <br/>
 
-if use "other_template" option:
-```javascript
-        
+if use `other_template` option:
+
+```javascript       
         
               files:{
         templateDetails:["ActivityItem.tsx","ActivityItem.unit.test.tsx","styles.ts","TemplateDetails.tsx", "TemplateDetails.unit.test.tsx"],        
