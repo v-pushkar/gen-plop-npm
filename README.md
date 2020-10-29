@@ -5,7 +5,8 @@ generator for build new files with   [plopjs](https://plopjs.com/)
 Add generator to your project
 
 ### `npm install generator-plop-tt`
-
+<br/>
+<br/>
 
 
 Add temlates to you project <br/>
@@ -19,6 +20,8 @@ const any = {any1, {{name}} } - fix conflict <br/>
 
 Create / add a `plopfile.js` at the root of your project <br/>
 add to file templates creator data, and generator function. Yoy can use any names and folders<br/>
+
+
 plopfile.js:
 ```javascript
 
