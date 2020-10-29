@@ -18,7 +18,7 @@ const any = {any1, {{name}} } - fix conflict <br/>
 
 
 Create / add a `plopfile.js` at the root of your project <br/>
-add to file templates creator data, and generator function<br/>
+add to file templates creator data, and generator function. Yoy can use any names and folders<br/>
 plopfile.js:
 ```javascript
 
@@ -54,7 +54,7 @@ run:
 ## Howe create templates obj:
 
 create object looks like this: </b>
-every element in object it will be new option for select. List of selections well be created with keys in this obj </b>
+every element in object it will be new option for select. List of selections well be created with keys in this obj <br/>
 ```javascript
 const templates = {
 views_container:{
@@ -100,7 +100,7 @@ views_container:{
       ...
 ```
 
-`files` variants for add templates files to generator : </b>
+`files` variants for add templates files to generator : <br/>
 
 if use "other_template" option:
 ```javascript
