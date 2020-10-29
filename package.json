@@ -22,7 +22,9 @@
   "keywords": [
     "npm",
     "generator",
+    "files generator",
     "plop",
-    "generator-plop-tt"
+    "generator-plop-tt",
+    "build new files"
   ]
 }
