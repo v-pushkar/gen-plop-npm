@@ -37,14 +37,14 @@ module.exports = function (plop) {
 Add comand to scripts in package.json <br/>
 
 // package.json
-{
-...,
+<br/>
+```javascript
+
 "scripts": {
 "plop": "plop"
-},
-...
 }
 
+```
 run:
 
 ### `npm run plop`
