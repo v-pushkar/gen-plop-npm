@@ -10,7 +10,7 @@ const genCreator = (templates, tplFolder, plop)=>{
  * @returns {Array} return array with file names
  * 
  */
-    const getFilesNames = (tplsFolder)=>(fs.readdirSync(path.join(__dirname,tplFolder,tplsFolder)))
+    const getFilesNames = (tplsFolder)=>(fs.readdirSync(path.join(process.cwd(),tplFolder,tplsFolder)))
 /**
  * The function check, names argument. If it sring(folder name), call to func getFilesNames and return arr of file names
  * 
@@ -33,13 +33,13 @@ const genCreator = (templates, tplFolder, plop)=>{
        */
       const changeFileName =  (filename, data)=>{ 
         const {name, Name, NAME}  = data    
-        if(filename.indexOf("Template")){
+        if(filename.includes("Template")){
             return filename.replace('Template', Name)
         }
-        if(filename.indexOf("template")){
+        if(filename.includes("template")){
             return filename.replace('template', name)
         }
-        if(filename.indexOf("TEMPLATE")){
+        if(filename.includes("TEMPLATE")){
             return filename.replace('TEMPLATE', NAME)
         }
         return filename
