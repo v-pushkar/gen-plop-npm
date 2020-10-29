@@ -14,6 +14,13 @@ use {{name}},{{Name}}, {{NAME}} in you template files for add nemes<br/>
 if you get a conflict with other brackets in code, use buckspace for separate bracets:<br/>
 const any = {any1, {{name}}} - get a conflict <br/>
 const any = {any1, {{name}} } - fix conflict <br/>
+<br/>
+`file name` - if your template file include "template" it well be changed to "name".<br/>
+example:
+if in prompt was inputted name "user", gets <br/>
+reducerTemplate.js --> reducerUser.js
+<br/>
+<br/>
 
 
 
@@ -65,12 +72,14 @@ const templates = {
 views_container:{
         description: 'create view component container',
         prompts:[
+          // input name for new file/variables in templates files
             {
                 type: "input",
                 name: "name",
                 message: "Input the name for redux module:",
                 validate: (input) => Boolean(input.length > 2),
               },
+               // input path for new files. if folder not exist, it will be created
               {
                 type: "input",
                 name: "path",
@@ -85,6 +94,7 @@ views_container:{
 ```
 
 if you have in parent template folder child folders with different templates, add to prompt option `other_template` with choices child folders.  <br/>
+
 with `other_template` example :
 
 ```javascript
