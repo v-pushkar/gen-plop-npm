@@ -8,17 +8,17 @@ Add generator to your project
 
 
 
-Add temlates to you project </b>
+Add temlates to you project <br/>
 
-use {{name}},{{Name}}, {{NAME}} in you template files for add nemes</b>
-if you get a conflict with other brackets in code, use buckspace for separate bracets:</b>
-const any = {any1, {{name}}} - get a conflict </b>
-const any = {any1, {{name}} } - fix conflict </b>
+use {{name}},{{Name}}, {{NAME}} in you template files for add nemes<br/>
+if you get a conflict with other brackets in code, use buckspace for separate bracets:<br/>
+const any = {any1, {{name}}} - get a conflict <br/>
+const any = {any1, {{name}} } - fix conflict <br/>
 
 
 
-Create / add a `plopfile.js` at the root of your project </b>
-add to file templates creator data, and generator function</b>
+Create / add a `plopfile.js` at the root of your project <br/>
+add to file templates creator data, and generator function<br/>
 plopfile.js:
 ```javascript
 
@@ -34,7 +34,7 @@ module.exports = function (plop) {
 
 ```
 
-Add comand to scripts in package.json </br>
+Add comand to scripts in package.json <br/>
 
 // package.json
 {
@@ -47,7 +47,7 @@ Add comand to scripts in package.json </br>
 
 run:
 
-### `yarn run plop`
+### `npm run plop`
 
 
 
