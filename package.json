@@ -1,6 +1,6 @@
 {
   "name": "generator-plop-tt",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "files generator with plop",
   "main": "index.js",
   "repository": {

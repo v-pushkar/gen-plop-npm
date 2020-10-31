@@ -5,7 +5,7 @@ const fs = require("fs")
 const genCreator = (templates, tplFolder, plop)=>{
 /**
  * The function retrn arr with file names
- * 
+ *  
  * @param {string} tplsFolder folder with templates
  * @returns {Array} return array with file names
  * 
